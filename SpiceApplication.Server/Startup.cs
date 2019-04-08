@@ -25,6 +25,8 @@ namespace SpiceApplication.Server
                     WasmMediaTypeNames.Application.Wasm,
                 });
             });
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +38,10 @@ namespace SpiceApplication.Server
             {
                 app.UseDeveloperExceptionPage();
             }
+
+//            app.UseStaticFiles();//
+
+            app.UseMvcWithDefaultRoute();
 
             // Use component registrations and static files from the app project.
             app.UseServerSideBlazor<App.Startup>();

@@ -1,15 +1,29 @@
 ﻿@inherits BlazorLayoutComponent
+@page "/blazor"
+@inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
+
+<Preloader />
 
 <div class="sidebar">
     <NavMenu />
 </div>
 
-<div class="main">
-    <div class="top-row px-4">
-        <a href="https://blazor.net" target="_blank" class="ml-md-auto">About</a>
-    </div>
+<Scrollbar />
 
-    <div class="content px-4">
-        @Body
+<div class="grid-container">
+    <div class="landing-page">
+        <div class="landing-page__intro">
+            <div class="landing-logo"></div>
+        </div>
     </div>
+    <MapComponent />
+    <FetchSpice />
 </div>
+
+@functions {
+
+    protected override void OnInit()
+    {
+        UriHelper.NavigateTo("/blazor");
+    }
+}

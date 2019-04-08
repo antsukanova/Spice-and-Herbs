@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html class="is-loading" lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width">
-    <title>SpiceApplication</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/img/cinnamon.png" />
+    <title>Spice &amp; Herbs</title>
     <base href="/" />
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <!-- CSSMap STYLESHEET - CONTINENTS -->
+    <link rel="stylesheet" type="text/css" href="css/cssmap-continents/cssmap-continents/cssmap-continents.css"
+          media="screen" />
+    <script src="js/jquery.min.js"></script>
+    <!-- CSSMap SCRIPT -->
+    <script type="text/javascript" src="css/cssmap-continents/jquery.cssmap.min.js"></script>
 </head>
-<body>
-    <app>Loading...</app>
+<body class="is-loading">
+    <app></app>
 
     <script src="_framework/blazor.server.js"></script>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,24 @@
+﻿@page "/react"
+@using System.Linq
+@using System.Threading.Tasks
+@using Microsoft.JSInterop;
+@inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
+
+@if (result == null)
+{
+    <div id="app-react"></div>
+}
+@functions {
+    string result = null;
+
+    protected override async Task OnInitAsync() => await RouteToReact();
+
+    private Task RouteToReact()
+    {
+        var uri = UriHelper.GetAbsoluteUri();
+        var routeName = uri.Substring(uri.LastIndexOf('/') + 1).ToLower();
+        return JSRuntime.Current.InvokeAsync<bool>(
+            "routeToReact",
+            routeName.First().ToString().ToUpper() + routeName.Substring(1));
+    }
+}

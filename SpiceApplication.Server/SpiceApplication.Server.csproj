@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SpiceApplication.App\SpiceApplication.App.csproj" />
+    <ProjectReference Include="..\SpiceApplication.Shared\SpiceApplication.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,35 +1,21 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">SpiceApplication</a>
-    <button class="navbar-toggler" onclick=@ToggleNavMenu>
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
-
-<div class=@(collapseNavMenu ? "collapse" : null) onclick=@ToggleNavMenu>
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match=NavLinkMatch.All>
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+﻿<a href="#" class="sidebar-menu fas fa-bars fa-lg"></a>
+<nav class="sidebar-nav">
+    <ul>
+        <li>
+            <NavLink class="sidebar-nav__link" href="blazor" Match=NavLinkMatch.All>
+                <i class="blazor-logo"></i>Blazor
             </NavLink>
         </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
+        <li>
+            <NavLink class="sidebar-nav__link" href="react">
+                <i class="fab fa-react"></i>React
             </NavLink>
         </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+        <li>
+            <NavLink class="sidebar-nav__link" href="vue">
+                <i class="fab fa-vuejs"></i>Vue
             </NavLink>
         </li>
     </ul>
-</div>
-
-@functions {
-    bool collapseNavMenu = true;
-
-    void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+    <Footer></Footer>
+</nav>

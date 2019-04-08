@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Blazor.Builder;
+using Microsoft.AspNetCore.Blazor.Services;
 using Microsoft.Extensions.DependencyInjection;
-using SpiceApplication.App.Services;
+using System;
+using System.Linq;
+using System.Net.Http;
 
 namespace SpiceApplication.App
 {
@@ -8,14 +11,20 @@ namespace SpiceApplication.App
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            // Since Blazor is running on the server, we can use an application service
-            // to read the forecast data.
-            services.AddSingleton<WeatherForecastService>();
+            if (services.All(x => x.ServiceType != typeof(HttpClient)))
+            {
+                services.AddScoped<HttpClient>(s =>
+                {
+                    var uriHelper = s.GetRequiredService<IUriHelper>();
+                    return new HttpClient
+                    {
+                        BaseAddress = new Uri(uriHelper.GetBaseUri())
+                    };
+                });
+            }
         }
 
-        public void Configure(IBlazorApplicationBuilder app)
-        {
-            app.AddComponent<SpiceApplication.App.App>("app");
-        }
+        public void Configure(IBlazorApplicationBuilder app) =>
+            app.AddComponent<App>(nameof(app));
     }
 }

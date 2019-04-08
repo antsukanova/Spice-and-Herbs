@@ -1,0 +1,37 @@
+﻿@using SpiceApplication.Shared.Models
+@inject HttpClient Http
+
+<div class="spices-page">
+    <h3>Choose your spice for today</h3>
+    <div class="spice-items">
+        @if (_spices == null)
+        {
+            <p>
+                <em>Loading...</em>
+            </p>
+        }
+        else
+        {
+            foreach (var spice in _spices)
+            {
+                <figure>
+                    <img src="@spice.ImageUrl" alt="">
+                    <figcaption>
+                        <div><h2>@spice.Title</h2></div>
+                        <div><p>@spice.Description</p></div>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
+            }
+        }
+    </div>
+</div>
+
+@functions {
+    Spice[] _spices;
+
+    protected override async Task OnInitAsync()
+    {
+        _spices = await Http.GetJsonAsync<Spice[]>("api/spices");
+    }
+}

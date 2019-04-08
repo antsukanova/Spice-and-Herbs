@@ -1,0 +1,21 @@
+﻿@using Microsoft.JSInterop;
+
+<div id="preloader">
+    <div class="svg-wrapper">
+        <svg height="150" width="150" xmlns="http://www.w3.org/2000/svg">
+            <rect class="animate" height="150" width="150" />
+        </svg>
+        <div class="text">
+            <span class="logo">@Resources.Resource.AppName</span>
+            <span class="framework-name">Blazor</span>
+        </div>
+    </div>
+</div>
+
+@functions {
+
+    protected override async Task OnAfterRenderAsync() => await Preload();
+
+    private Task Preload() =>
+        JSRuntime.Current.InvokeAsync<bool>("preload", 3000);
+}

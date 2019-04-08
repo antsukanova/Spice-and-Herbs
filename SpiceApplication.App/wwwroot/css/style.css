@@ -1,0 +1,602 @@
+﻿:root {
+    --progress-bar-stroke-width: 1.8;
+    --progress-bar-size: 70px;
+    --text-color: #ffffff;
+    --white-color: rgba(255, 255, 255, 0.7);
+    --white-gradient: rgba(255, 255, 255, 0);
+    --orange-color: rgb(255, 163, 26);
+}
+
+/*------fonts------*/
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../css/google/font/Quicksand-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Oleo Script Swash Caps';
+    src: url('../css/google/font/OleoScriptSwashCaps-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html,
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html:not(.is-loading) {
+    background: url('../img/background.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 100vh);
+    grid-template-areas:
+        "landing-page"
+        "landing-logo"
+        "about-page"
+        "spices-page";
+}
+
+.landing-page {
+    grid-area: landing-page;
+    grid-row: 1;
+}
+
+h3 {
+    font-family: 'Oleo Script Swash Caps', sans-serif;
+    font-size: 5em;
+    text-shadow: .02em .02em .01em rgb(139, 79, 1);
+    margin: .2em;
+    color: var(--text-color);
+    padding-left: .2em;
+}
+
+/*--------About---------*/
+.about-page {
+    grid-area: about-page;
+    grid-row: 2;
+    /* position: relative; */
+}
+
+.about-page h3 {
+    background: url('../img/layer_small.png') center left no-repeat;
+}
+
+
+/*map*/
+#map {
+    float: left;
+}
+
+#about-text {
+    font-size: 1.3rem;
+    margin: .5em;
+}
+
+#about-text p {
+    text-indent: 1em;
+    text-align: justify;
+}
+
+/*--------Spices---------*/
+.spices-page {
+    grid-area: spices-page;
+    grid-row: 3
+}
+
+.spices-page h3 {
+    background: url('../img/layer_big.png') center left no-repeat;
+    background-size: contain;
+}
+
+.spice-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.spice-items figure {
+    margin: 0;
+}
+
+.spice-items img {
+    display: block;
+    width: 100%;
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.06);
+}
+
+/*--------Menu---------*/
+.sidebar-menu {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    display: inline-block;
+    margin: 0.5em 0 0 0.5em;
+    color: var(--text-color);
+}
+
+.sidebar-menu:hover {
+    cursor: pointer;
+}
+
+.sidebar-nav {
+    position: fixed;
+    overflow: hidden;
+    width: 0;
+    left: 0;
+    transition: all .3s ease-in;
+}
+
+.sidebar-nav {
+    top: 0;
+    height: 100vh;
+    background-color: var(--white-color);
+}
+
+.sidebar-nav,
+.sidebar-menu {
+    z-index: 101;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    background: -moz-linear-gradient(top, var(--white-gradient) 0%, var(--orange-color) 90%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, var(--white-gradient) 0%, var(--orange-color) 90%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, var(--white-gradient) 0%, var(--orange-color) 90%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0);
+    /* IE6-9 */
+}
+
+.footer p {
+    align-self: flex-end;
+}
+
+.footer:hover p:after {
+    content: "\ATsukanova Anna";
+    font-weight: bold;
+}
+
+.blazor-logo {
+    background: url('../img/svg/logo_blazor.svg') no-repeat;
+    height: 3.5rem;
+    width: 3rem;
+    background-size: .8em .8em;
+}
+
+.sidebar>*:hover~*,
+.sidebar>*:focus~*,
+.sidebar>*~*:hover,
+.sidebar>*~*:focus,
+.sidebar>a:target {
+    width: 14em;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.sidebar-nav i {
+    font-weight: normal;
+}
+
+.sidebar-nav ul {
+    padding-top: 6em;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.sidebar-nav ul i {
+    font-size: 4rem;
+}
+
+.sidebar-nav ul li {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.sidebar-nav ul li i:hover {
+    -webkit-transform: rotate(360deg);
+    /* for Safari */
+    transform: rotate(360deg);
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
+}
+
+.sidebar-nav__link {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+}
+
+.sidebar-nav__link * {
+    display: block;
+    color: var(--orange-color);
+}
+
+.fa-vuejs,
+.fa-react {
+    text-shadow: -2px 2px 0px #00000050;
+}
+
+/*--------Preloader---------*/
+#preloader {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 102;
+    background: var(--text-color);
+}
+
+#preloader.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.is-loading {
+    overflow: hidden;
+}
+
+#preloader .svg-wrapper {
+    height: 9.375em;
+    width: 9.375em;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#preloader .animate {
+    fill: transparent;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 600;
+    stroke-width: 1px;
+    stroke: #fdad59;
+}
+
+#preloader .text {
+    font-family: 'Oleo Script Swash Caps';
+    display: inline-block;
+    position: relative;
+    top: -130px;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+  }
+
+#preloader .logo {
+    display: block;
+    padding-bottom: 5px;
+}
+
+#preloader .framework-name {
+    display: block;
+    padding-top: 10px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.landing-page .landing-page__intro {
+    background: no-repeat top center;
+    background-size: cover;
+    background-image: url('../img/spice.jpg');
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 3em black;
+    -webkit-transition: -webkit-transform 4s ease-out;
+    transition: transform 4s ease-out;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-transform-origin: top center;
+    -ms-transform-origin: top center;
+    transform-origin: top center;
+    border: 2px solid gray;
+}
+
+.landing-page {
+    overflow: hidden;
+    position: relative;
+    z-index: -1;
+    padding: 2em 5em 5em;
+}
+
+.landing-logo {
+    position: absolute;
+    bottom: -7rem;
+    left: -3rem;
+    background: no-repeat center center;
+    background-size: contain;
+    background-image: url('../img/logo.png');
+    width: 30rem;
+    height: 35rem;
+}
+
+/*--------Scroolbar---------*/
+.scrollbar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-block;
+    margin: 0 0.5em 0.5em 0;
+    width: var(--progress-bar-size);
+    height: var(--progress-bar-size);
+    z-index: 101;
+}
+
+.scrollbar svg {
+    transform: rotate(-90deg);
+}
+
+.scrollbar .progress-bar__background {
+    fill: none;
+    stroke: var(--text-color);
+    stroke-width: var(--progress-bar-stroke-width);
+}
+
+.scrollbar .progress-bar__progress {
+    fill: none;
+    stroke: var(--text-color);
+    stroke: var(--orange-color);
+    stroke-dasharray: 100 100;
+    stroke-dashoffset: 100;
+    stroke-linecap: round;
+    stroke-width: var(--progress-bar-stroke-width);
+    transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.mouse-scroll {
+    display: block;
+    width: 2em;
+    height: 2em;
+    border-radius: 20px;
+    background-color: var(--white-color);
+    border: 2px solid var(--orange-color);
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1.1em;
+    margin: 0 auto;
+    transition: opacity 0.5s;
+}
+
+.mouse-scroll::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 8px;
+    position: relative;
+    background: var(--orange-color);
+    -webkit-animation: scrollWheel 2s infinite;
+    animation: scrollWheel 2s infinite;
+    animation-duration: .7s;
+    animation-iteration-count: infinite;
+    box-sizing: border-box;
+}
+
+.mouse-scroll:hover {
+    cursor: pointer;
+    opacity: .5;
+}
+
+@keyframes scrollWheel {
+    from {
+        top: 0px;
+    }
+
+    to {
+        top: 6px;
+    }
+}
+
+/*-----------SPICE ITEMS-------------*/
+.spice-items figure {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.spice-items figure * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.spice-items figure img {
+    opacity: 1;
+    width: 100%;
+    -webkit-transition: opacity 0.35s;
+    transition: opacity 0.35s;
+}
+
+.spice-items figure figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+}
+
+.spice-items figure figcaption>div {
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    width: 50%;
+    position: relative;
+}
+
+.spice-items figure figcaption::before {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    width: 0.15em;
+    left: 50%;
+    content: '';
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0);
+    -webkit-transition: ease-in-out 0.4s;
+    transition: ease-out 0.4s;
+    -webkit-transition-delay: ease-out 0.3s;
+    transition-delay: 0.3s;
+}
+
+.spice-items figure h2,
+.spice-items figure p {
+    margin: 0;
+    padding: 1.5em;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+    display: flex;
+    align-items:center;
+    -webkit-transition: opacity 0.45s, -webkit-transform 0.45s;
+    transition: opacity 0.45s, -webkit-transform 0.45s, -moz-transform 0.45s, -o-transform 0.45s, transform 0.45s;
+}
+
+.spice-items h2 {
+    text-transform: uppercase;
+    bottom: 0;
+    background: rgba(255, 174, 0, 0.5);
+    color: white;
+    -webkit-transform: translate3d(50%, 0%, 0);
+    transform: translate3d(50%, 0%, 0);
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.spice-items p {
+    display: block;
+    bottom: 0;
+    text-align: left;
+    top: 0;
+    color: #000;
+    background: var(--white-color);
+    -webkit-transform: translate3d(-50%, 0%, 0);
+    transform: translate3d(-50%, 0%, 0);
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.spice-items figure a {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    color: #ffffff;
+}
+
+.spice-items figure:hover img {
+    opacity: 0.7;
+}
+
+.spice-items figure:hover figcaption h2,
+.spice-items figure:hover figcaption p {
+    -webkit-transform: translate3d(0%, 0%, 0);
+    transform: translate3d(0%, 0%, 0);
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+    opacity: 1;
+}
+
+.spice-items figure figcaption h2 {
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.spice-items figure:hover figcaption::before {
+    background: #ffffff;
+    top: 0;
+    bottom: 0;
+    opacity: 1;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+/*1440px*/
+@media screen and (max-width: 90em) {
+    .landing-logo {
+        bottom: -17rem;
+        width: 30rem;
+        height: 55rem;
+        left: -2rem;
+    } 
+
+}
+
+/*1200px*/
+@media screen and (max-width: 1200px) {
+    #about-text {
+        display: block;
+        font-size: 1.3rem;
+    }
+  }
+  
+  /*900px*/
+  @media screen and (max-width: 56.25em) {
+    #map {
+        left: 0;
+    }
+    .spices-page h3, .about-page h3 { 
+        font-size: 2.5rem;
+        background: url('../img/layer_small.png') center left no-repeat;
+        background-size: cover;
+    }
+    .landing-logo {
+       width: 20rem;
+    }
+  }
+
+  /*600px*/  
+  @media screen and (max-width: 37.5em) {
+   .blazor-logo {
+        width: 3rem;
+        background-size: 3rem 3rem;
+    }
+    .landing-page {
+        background-size: cover;
+        background-image: url('../img/spice_small.jpg'); 
+        background-position: center;
+    }
+    .landing-page .landing-page__intro {
+        display:unset;
+    } 
+    .landing-logo {
+        width: 15rem;  
+        bottom: -20rem;
+        left: -3rem;
+    }
+    #about-text {
+        display: inline-block;
+        font-size: 1rem;
+    }
+    #map {
+        margin-left: 5%;
+    }
+  }
