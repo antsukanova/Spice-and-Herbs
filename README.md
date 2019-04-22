@@ -15,5 +15,8 @@ The project is written in three selected technologies - **Blazor, React, Vue**. 
 - [CSS & JQUERY INTERACTIVE MAP](https://cssmapsplugin.com/) - CSS map plugin
 
 ## License
+[Spice&Herbs](https://spiceapplicationserver.azurewebsites.net/) - you can see how it works here.
+
+## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
